@@ -7,4 +7,6 @@ Rails.application.routes.draw do
   }
 
   root to: 'home#index'
+  get '/new' => 'indices#new'
+  get '/show' => 'indices#show'
 end

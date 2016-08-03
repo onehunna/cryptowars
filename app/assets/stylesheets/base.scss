@@ -26,6 +26,7 @@ body {
   &__user {
     display: flex;
     align-items: center;
+    margin-right: 10px;
   }
 
   &__user__img {
@@ -38,6 +39,16 @@ body {
   &__user__name {
     display: flex;
     flex-direction: column;
+
+    strong {
+      font-weight: 600;
+    }
+  }
+
+  &__user__link {
+    color: white;
+    font-size: 12px;
+    text-decoration: none;
   }
 }
 
@@ -45,6 +56,8 @@ body {
   font-size: 24px;
   font-weight: bold;
   margin: 10px;
+  color: white;
+  text-decoration: none;
 }
 
 .header__btn {
