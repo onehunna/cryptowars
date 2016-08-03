@@ -1,6 +1,6 @@
 <h1><%= @index.name %></h1>
 <div>by <%= @index.user.name %></div>
-<div>Started on <%= @index.created_at %></div>
+<div>Started on <%= l @index.created_at %></div>
 
 <table class="assets">
   <tbody>
@@ -18,8 +18,8 @@
       <tr class="asset">
         <td><%= idx + 1 %></td>
         <td><%= asset.name %></td>
-        <td><%= value.market_cap_usd %></td>
-        <td><%= value.price_usd %></td>
+        <td><%= number_to_currency value.market_cap_usd %></td>
+        <td><%= number_to_currency value.price_usd %></td>
       </tr>
     <% end %>
   </tbody>
