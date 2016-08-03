@@ -1,36 +1,22 @@
 <table class="leaderboard">
   <tbody>
-    <!-- Playah -->
-    <tr>
-      <td>1</td>
-      <td>
-        <div class="leaderboard__playah">
-          <img class="leaderboard__playah__icon" src="<%= current_user && current_user.avatar_url %>"></img>
-          <div>
-            <div>Baller Fund</div>
-            <div>Ben Jennings</div>
+    <% @indices.each_with_index do |index, idx| %>
+      <!-- Playah -->
+      <tr>
+        <td><%= idx + 1 %></td>
+        <td>
+          <div class="leaderboard__playah">
+            <img class="leaderboard__playah__icon" src="<%= index.user.avatar_url %>"></img>
+            <div>
+              <div><%= index.name %></div>
+              <div><%= index.user.name %></div>
+            </div>
           </div>
-        </div>
-      </td>
-      <td>
-        $1,010
-      </td>
-    </tr>
-    <!-- Playah -->
-    <tr>
-      <td>2</td>
-      <td>
-        <div class="leaderboard__playah">
-          <img class="leaderboard__playah__icon" src="<%= current_user && current_user.avatar_url %>"></img>
-          <div>
-            <div>Miastah Etha</div>
-            <div>Ethan Bradberry</div>
-          </div>
-        </div>
-      </td>
-      <td>
-        $810
-      </td>
-    </tr>
+        </td>
+        <td>
+          <%= number_to_currency rand(1000) + 100 %>
+        </td>
+      </tr>
+    <% end %>
   </tbody>
 </table>

@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   get '/assets' => 'assets#index'
 
+  resources :indices, only: [:new, :create, :show]
+
   root to: 'home#index'
-  get '/new' => 'indices#new'
-  get '/show' => 'indices#show'
 end

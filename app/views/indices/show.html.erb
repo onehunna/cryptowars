@@ -1,6 +1,6 @@
-<h1>Etha Classic</h1>
-<div>by Ethan Bradberry</div>
-<div>Started on date</div>
+<h1><%= @index.name %></h1>
+<div>by <%= @index.user.name %></div>
+<div>Started on <%= @index.created_at %></div>
 
 <table class="assets">
   <tbody>
@@ -10,29 +10,17 @@
       <td>Name</td>
       <td>Market Cap</td>
       <td>Price</td>
-      <td>Available Supply</td>
-      <td>Volume (24h)</td>
-      <td>% Change (24h)</td>
     </tr>
-    <!-- Asset -->
-    <tr class="asset">
-      <td>1</td>
-      <td>Bitcoin</td>
-      <td>$100,000</td>
-      <td>$500</td>
-      <td>15,790,944 BTC</td>
-      <td>$ 353,827,000 </td>
-      <td>-9.38 %</td>
-    </tr>
-    <!-- Asset -->
-    <tr class="asset">
-      <td>2</td>
-      <td>Etha Classic</td>
-      <td>$200,000</td>
-      <td>$100</td>
-      <td>12,790,944 ETC</td>
-      <td>$ 153,827,000 </td>
-      <td>+39.38 %</td>
-    </tr>
+    <% @index.assets.each_with_index do |asset, idx| %>
+      <% value = asset.values.last %>
+
+      <!-- Asset -->
+      <tr class="asset">
+        <td><%= idx + 1 %></td>
+        <td><%= asset.name %></td>
+        <td><%= value.market_cap_usd %></td>
+        <td><%= value.price_usd %></td>
+      </tr>
+    <% end %>
   </tbody>
 </table>

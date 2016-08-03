@@ -1,3 +1,10 @@
+<%= form_for @index do |f| %>
+
+<p>
+  <label>Name your index</label>
+  <%= f.text_field :name %>
+</p>
+
 <table class="assets">
   <tbody>
     <!-- Legend -->
@@ -6,32 +13,22 @@
       <td>Name</td>
       <td>Market Cap</td>
       <td>Price</td>
-      <td>Available Supply</td>
-      <td>Volume (24h)</td>
-      <td>% Change (24h)</td>
       <td>Selected</td>
     </tr>
-    <!-- Asset -->
-    <tr class="asset">
-      <td>1</td>
-      <td>Bitcoin</td>
-      <td>$100,000</td>
-      <td>$500</td>
-      <td>15,790,944 BTC</td>
-      <td>$ 353,827,000 </td>
-      <td>-9.38 %</td>
-      <td><input type="checkbox"></td>
-    </tr>
-    <!-- Asset -->
-    <tr class="asset">
-      <td>2</td>
-      <td>Etha Classic</td>
-      <td>$200,000</td>
-      <td>$100</td>
-      <td>12,790,944 ETC</td>
-      <td>$ 153,827,000 </td>
-      <td>+39.38 %</td>
-      <td><input type="checkbox"></td>
-    </tr>
+    <% @assets.limit(15).each_with_index do |asset, idx| %>
+      <% value = asset.values.last %>
+
+      <!-- Asset -->
+      <tr class="asset">
+        <td><%= idx + 1 %></td>
+        <td><%= asset.name %></td>
+        <td><%= value.market_cap_usd %></td>
+        <td><%= value.price_usd %></td>
+        <td><%= check_box_tag 'index[codes][]', asset.code %></td>
+      </tr>
+    <% end %>
   </tbody>
 </table>
+
+<%= f.submit %>
+<% end %>
