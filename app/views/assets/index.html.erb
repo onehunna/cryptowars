@@ -1,0 +1,8 @@
+<% @assets.each do |asset| %>
+  <li>
+    <strong><%= asset.code %></strong>
+    <%= asset.name %>
+  </li>
+<% end %>
+
+<%= paginate @assets %>
