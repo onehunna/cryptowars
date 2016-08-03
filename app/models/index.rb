@@ -9,8 +9,8 @@ class Index < ApplicationRecord
     # end
   end
 
-  def codes=(codes=[])
-    codes.each do |code|
+  def codes=(_codes = [])
+    _codes.each do |code|
       p = self.positions.new
       p.asset = Asset.find_by(code: code)
       p.size = 1
