@@ -14,6 +14,6 @@
  *= require_self
  */
 
-@import 'nomalize';
+@import 'normalize';
 @import 'base';
 @import 'leaderboard';
