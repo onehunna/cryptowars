@@ -1,0 +1,44 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont,
+      "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
+      "Fira Sans", "Droid Sans", "Helvetica Neue",
+      sans-serif;
+}
+
+// Header
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 48px;
+  padding: 4px;
+  color: rgb(255, 255, 255);
+  background-color: rgb(0, 136, 238);
+  opacity: 0.875;
+}
+
+.header__logo {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 10px;
+}
+
+.header__btn {
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid white;
+  border-radius: 2px;
+  color: white;
+  text-decoration: none;
+
+  &__icon {
+    margin-right: 8px;
+  }
+}

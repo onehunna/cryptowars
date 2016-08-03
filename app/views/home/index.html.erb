@@ -1,12 +1,71 @@
-<ul class="nav navbar-nav">
-  <% if signed_in? %>
-    Signed in as
-    <% if current_user.avatar_url? %>
-      <img src="<%= current_user.avatar_url %>">
+<div class="app">
+  <div class="header">
+    <div class="header__logo">CryptoWars</div>
+    <% if signed_in? %>
+      Signed in as
+      <% if current_user.avatar_url? %>
+        <img src="<%= current_user.avatar_url %>">
+      <% end %>
+      <strong><%= current_user.name %></strong>.
+      <%= link_to 'Sign out' %>
+    <% else %>
+<%= link_to user_twitter_omniauth_authorize_path, class: "header__btn" do %>
+      <svg class="header__btn__icon" width="17px" height="14px" viewBox="74 98 17 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+          <path d="M80.03168,111.45125 C86.06944,111.45125 89.37184,106.44901 89.37184,102.11109 C89.37184,101.96901 89.37184,101.82757 89.36224,101.68677 C90.0046921,101.222073 90.5592675,100.646693 91,99.9875699 C90.4008826,100.253043 89.7653307,100.42714 89.11456,100.50405 C89.7998362,100.093798 90.312719,99.4485439 90.55776,98.6883699 C89.9133808,99.0707413 89.2084135,99.3402176 88.47328,99.4851699 C87.455733,98.4031822 85.8388604,98.1383619 84.5293115,98.839205 C83.2197627,99.5400481 82.543216,101.032258 82.87904,102.47909 C80.2396133,102.34677 77.7804645,101.100097 76.1136,99.0493299 C75.2423186,100.549262 75.6873522,102.46812 77.12992,103.43141 C76.6075144,103.415927 76.0964988,103.275002 75.64,103.02053 L75.64,103.06213 C75.6404276,104.624749 76.741921,105.970632 78.2736,106.28005 C77.7903165,106.411851 77.2832516,106.431118 76.79136,106.33637 C77.2214067,107.6736 78.4538077,108.589672 79.85824,108.61605 C78.6958304,109.529606 77.2598781,110.02554 75.78144,110.02405 C75.5202583,110.023548 75.2593306,110.007735 75,109.97669 C76.501207,110.940067 78.2479446,111.451069 80.03168,111.44869" stroke="none" fill="#FFFFFF" fill-rule="evenodd"></path>
+          <span>Sign in with Twitter</span>
+      </svg>
     <% end %>
-    <strong><%= current_user.name %></strong>.
-    <%= link_to 'Sign out' %>
-  <% else %>
-    <li><%= link_to 'Twitter', user_twitter_omniauth_authorize_path %></li>
-  <% end %>
-</ul>
+    <% end %>
+
+  </div>
+
+  <table class="leaderboard">
+    <tbody>
+      <!-- Playah -->
+      <tr>
+        <td>1</td>
+        <td>
+          <div class="leaderboard__playah">
+            <img class="leaderboard__playah__icon"></img>
+            <div>
+              <div>Index Name</div>
+              <div>Ben Jennings</div>
+            </div>
+          </div>
+        </td>
+        <td>
+          $1,010
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+  <table class="assets">
+    <tbody>
+      <!-- Legend -->
+      <tr class="assets__legend">
+        <td>#</td>
+        <td>Name</td>
+        <td>Market Cap</td>
+        <td>Price</td>
+        <td>Available Supply</td>
+        <td>Volume (24h)</td>
+        <td>% Change (24h)</td>
+        <td>Selected</td>
+      </tr>
+      <!-- Asset -->
+      <tr class="">
+        <td>1</td>
+        <td>Bitcoin</td>
+        <td>$100,000</td>
+        <td>$500</td>
+        <td>15,790,944 BTC</td>
+        <td>$ 353,827,000 </td>
+        <td>-9.38 %</td>
+        <td><input type="checkbox"></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+>>>>>>> Add basic layout + tables

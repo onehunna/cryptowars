@@ -13,3 +13,7 @@
  *= require_tree .
  *= require_self
  */
+
+@import 'nomalize';
+@import 'base';
+@import 'leaderboard';
