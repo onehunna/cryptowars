@@ -1,0 +1,6 @@
+# config/schedule.yml
+
+asset_refresh:
+  cron: "*/10 * * * *"
+  class: "AssetRefreshWorker"
+  queue: default

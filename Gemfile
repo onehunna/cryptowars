@@ -33,6 +33,7 @@ gem 'jbuilder', '~> 2.5'
 
 # Background workers
 gem 'sidekiq'
+gem 'sidekiq-cron'
 gem 'sinatra', :require => nil # Sidekiq web UI
 
 group :development, :test do

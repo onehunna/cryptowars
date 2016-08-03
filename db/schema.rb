@@ -10,10 +10,53 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160803030319) do
+ActiveRecord::Schema.define(version: 20160803035655) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "asset_values", force: :cascade do |t|
+    t.integer  "asset_id"
+    t.decimal  "price_usd"
+    t.decimal  "price_btc"
+    t.decimal  "market_cap_usd"
+    t.decimal  "price_diff"
+    t.decimal  "price_diff_percent"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.index ["asset_id"], name: "index_asset_values_on_asset_id", using: :btree
+  end
+
+  create_table "assets", force: :cascade do |t|
+    t.string   "code"
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["code"], name: "index_assets_on_code", unique: true, using: :btree
+  end
+
+  create_table "indices", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "name"
+    t.decimal  "value_usd"
+    t.decimal  "value_diff_1h"
+    t.decimal  "value_diff_24h"
+    t.decimal  "value_diff_7d"
+    t.integer  "rank"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["user_id"], name: "index_indices_on_user_id", using: :btree
+  end
+
+  create_table "positions", force: :cascade do |t|
+    t.integer  "asset_id"
+    t.integer  "index_id"
+    t.decimal  "size"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["asset_id", "index_id"], name: "index_positions_on_asset_id_and_index_id", unique: true, using: :btree
+    t.index ["index_id"], name: "index_positions_on_index_id", using: :btree
+  end
 
   create_table "user_identities", force: :cascade do |t|
     t.string   "provider"
