@@ -18,7 +18,7 @@
       <tr class="asset">
         <td><%= idx + 1 %></td>
         <td><%= asset.name %></td>
-        <td><%= number_to_currency value.market_cap_usd %></td>
+        <td><%= number_to_currency value.market_cap_usd, precision: 0 %></td>
         <td><%= number_to_currency value.price_usd %></td>
       </tr>
     <% end %>
