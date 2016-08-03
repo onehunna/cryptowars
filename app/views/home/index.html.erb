@@ -1,3 +1,12 @@
 <ul class="nav navbar-nav">
-  <li><%= link_to 'Twitter', '/auth/twitter' %></li>
+  <% if signed_in? %>
+    Signed in as
+    <% if current_user.avatar_url? %>
+      <img src="<%= current_user.avatar_url %>">
+    <% end %>
+    <strong><%= current_user.name %></strong>.
+    <%= link_to 'Sign out' %>
+  <% else %>
+    <li><%= link_to 'Twitter', user_twitter_omniauth_authorize_path %></li>
+  <% end %>
 </ul>

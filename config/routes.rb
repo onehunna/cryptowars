@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  get '/auth/:provider/callback', to: 'sessions#create'
+  # mount Sidekiq::Web => '/thatqueuethough'
+
+  # Custom devise controllers for user session management
+  devise_for :users, controllers: {
+    omniauth_callbacks: "users/omniauth_callbacks"
+  }
 
   root to: 'home#index'
 end
