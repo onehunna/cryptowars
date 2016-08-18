@@ -1,12 +1,23 @@
 class Index < ApplicationRecord
   belongs_to :user
-  has_many :positions
+  has_many :positions, dependent: :delete_all
   has_many :assets, through: :positions
+  has_many :values, class_name: 'IndexValue', dependent: :delete_all
 
-  def recalculate
-    # assets.each do |asset|
-    #   asset.values.last
-    # end
+  def recalculate!
+    values.create!
+  end
+
+  def last_value
+    values.order(:id).last
+  end
+
+  def value
+    last_value.value_usd
+  end
+
+  def total_weights
+    positions.sum(:size)
   end
 
   def codes=(_codes = [])

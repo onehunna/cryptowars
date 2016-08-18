@@ -6,6 +6,8 @@ class AssetRefreshWorker
     data.each do |asset|
       Asset.update_data(asset)
     end
+
+    Index.all.each(&:recalculate!)
   end
 end
 
