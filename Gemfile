@@ -12,8 +12,6 @@ gem 'sass-rails'
 gem 'uglifier'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails'
-# See https://github.com/rails/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
 
 # Pagination
 gem 'kaminari'
@@ -51,6 +49,7 @@ group :development do
   # gem 'spring'
   # gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'foreman'
+  gem 'therubyracer', platforms: :ruby
 end
 
 group :production do
