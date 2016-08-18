@@ -1,4 +1,15 @@
 <h1><%= @index.name %></h1>
+<h2>
+  <%= number_to_currency @index.value %>
+  <% if @index.value_diff_1h.present? %>
+    <% if @index.value_diff_1h > 0 %>
+      <span style="color: green;">+<%= number_to_currency @index.value_diff_1h %></span>
+    <% else %>
+       <span style="color: red;"><%= number_to_currency @index.value_diff_1h %></span>
+    <% end %>
+  <% end %>
+
+</h2>
 <div>by <%= @index.user.name %></div>
 <div>Started on <%= l @index.created_at %></div>
 
