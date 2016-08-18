@@ -17,9 +17,8 @@ ActiveRecord::Schema.define(version: 20160818033538) do
 
   create_table "asset_values", force: :cascade do |t|
     t.integer  "asset_id"
-    t.decimal  "price_usd"
-    t.decimal  "price_btc"
-    t.decimal  "market_cap_usd"
+    t.decimal  "price"
+    t.decimal  "market_cap"
     t.decimal  "price_diff"
     t.decimal  "price_diff_percent"
     t.datetime "created_at",         null: false
@@ -37,7 +36,7 @@ ActiveRecord::Schema.define(version: 20160818033538) do
 
   create_table "index_values", force: :cascade do |t|
     t.integer  "index_id"
-    t.decimal  "value_usd"
+    t.decimal  "value"
     t.decimal  "value_diff"
     t.decimal  "value_diff_percent"
     t.datetime "created_at",         null: false
@@ -48,7 +47,7 @@ ActiveRecord::Schema.define(version: 20160818033538) do
   create_table "indices", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "name"
-    t.decimal  "value_usd"
+    t.decimal  "value"
     t.decimal  "value_diff_1h"
     t.decimal  "value_diff_24h"
     t.decimal  "value_diff_7d"

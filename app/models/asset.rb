@@ -7,7 +7,7 @@ class Asset < ApplicationRecord
 
   def price
     return 0 unless values.any?
-    values.order(:id).last.price_usd
+    values.order(:id).last.price
   end
 
   def self.update_data(data)
@@ -26,8 +26,8 @@ class Asset < ApplicationRecord
     end
 
     value = asset.values.new
-    value.price_usd = data['price_usd']
-    value.market_cap_usd = data['market_cap_usd']
+    value.price = data['price_usd']
+    value.market_cap = data['market_cap_usd']
     value.save!
   end
 end

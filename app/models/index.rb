@@ -17,7 +17,7 @@ class Index < ApplicationRecord
   end
 
   def value
-    last_value.value_usd
+    last_value.value
   end
 
   def total_weights

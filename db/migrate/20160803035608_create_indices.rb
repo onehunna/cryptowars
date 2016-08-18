@@ -3,7 +3,7 @@ class CreateIndices < ActiveRecord::Migration[5.0]
     create_table :indices do |t|
       t.integer :user_id
       t.string :name
-      t.decimal :value_usd
+      t.decimal :value
       t.decimal :value_diff_1h
       t.decimal :value_diff_24h
       t.decimal :value_diff_7d
