@@ -1,4 +1,6 @@
 class Asset < ApplicationRecord
+  MAX_VALUES = 5
+
   has_many :values, class_name: 'AssetValue'
   has_many :positions
   has_many :indices, through: :positions
@@ -11,6 +13,11 @@ class Asset < ApplicationRecord
       asset.code = data['symbol']
       asset.name = data['name']
       asset.save!
+    end
+
+    # Keep only a certain max historical values for asset
+    if asset.values.count > MAX_VALUES
+      asset.values.order(:id).last.destroy
     end
 
     value = asset.values.new
