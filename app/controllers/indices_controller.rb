@@ -1,4 +1,5 @@
 class IndicesController < ApplicationController
+  skip_before_filter :authenticate_user!, only: [:show, :index]
   def new
     @assets = Asset.all
     @index = Index.new
