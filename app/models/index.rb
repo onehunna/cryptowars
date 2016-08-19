@@ -1,5 +1,5 @@
 class Index < ApplicationRecord
-  BASELINE = 100
+  BASELINE = 100.to_money('USD')
 
   belongs_to :user
   has_many :positions, dependent: :delete_all
@@ -8,9 +8,25 @@ class Index < ApplicationRecord
 
   after_create :initialize!
 
+  monetize :value_cents
+  monetize :value_diff_cents
+
   def initialize!
     positions.each(&:initialize!)
+    normalize_positions!
     recalculate!
+  end
+
+  def normalize_positions!
+    # Figure out how much we're missing to sum up to a round 100 dollars.
+    remainder = BASELINE - positions.to_a.sum(&:dollars_to_spend)
+
+    return unless remainder.positive?
+
+    # Then add that to one of the posisitions.
+    position = positions.sample
+    position.dollars_to_spend += remainder
+    position.initialize!
   end
 
   def recalculate!
@@ -25,7 +41,7 @@ class Index < ApplicationRecord
   end
 
   def value
-    last_value.value
+    last_value&.value
   end
 
   def total_weights

@@ -3,8 +3,8 @@ class CreateIndices < ActiveRecord::Migration[5.0]
     create_table :indices do |t|
       t.integer :user_id
       t.string :name
-      t.decimal :value
-      t.decimal :value_diff, default: 0
+      t.monetize :value
+      t.monetize :value_diff, default: 0
       t.decimal :value_diff_percent, default: 0
       t.integer :rank, default: 0
 
