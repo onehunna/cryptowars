@@ -3,6 +3,7 @@ class CreatePositions < ActiveRecord::Migration[5.0]
     create_table :positions do |t|
       t.integer :asset_id
       t.integer :index_id
+      t.decimal :weight, default: 1
       t.decimal :size
 
       t.timestamps

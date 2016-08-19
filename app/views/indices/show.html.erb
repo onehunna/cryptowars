@@ -1,14 +1,8 @@
 <h1><%= @index.name %></h1>
 <h2>
   <%= number_to_currency @index.value %>
-  <% if @index.value_diff_1h.present? %>
-    <% if @index.value_diff_1h > 0 %>
-      <span style="color: green;">+<%= number_to_currency @index.value_diff_1h %></span>
-    <% else %>
-       <span style="color: red;"><%= number_to_currency @index.value_diff_1h %></span>
-    <% end %>
-  <% end %>
-
+  <%= positive_negative_format @index.value_diff, formatter: :currency %>
+  <%= positive_negative_format @index.value_diff_percent, formatter: :percentage %>
 </h2>
 <div>by <%= @index.user.name %></div>
 <div>Started on <%= l @index.created_at %></div>
@@ -19,18 +13,22 @@
     <tr class="assets__legend">
       <td>#</td>
       <td>Name</td>
+      <td>Amount</td>
+      <td>Value</td>
+      <td>Weight</td>
       <td>Market Cap</td>
       <td>Price</td>
     </tr>
-    <% @index.assets.each_with_index do |asset, idx| %>
-      <% value = asset.values.last %>
-
+    <% @index.positions.each_with_index do |position, idx| %>
       <!-- Asset -->
       <tr class="asset">
         <td><%= idx + 1 %></td>
-        <td><%= asset.name %></td>
-        <td><%= number_to_currency value.market_cap_usd, precision: 0 %></td>
-        <td><%= number_to_currency value.price_usd %></td>
+        <td><%= position.asset.name %></td>
+        <td><%= number_with_precision position.size, precision: 2 %> <%= position.asset.code %></td>
+        <td><%= number_to_currency position.value %></td>
+        <td><%= number_to_percentage position.relative_weight * 100, precision: 0 %></td>
+        <td><%= number_to_currency position.asset.market_cap, precision: 0 %></td>
+        <td><%= number_to_currency position.asset.price %></td>
       </tr>
     <% end %>
   </tbody>

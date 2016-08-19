@@ -1,14 +1,6 @@
 class Asset < ApplicationRecord
-  MAX_VALUES = 5
-
-  has_many :values, class_name: 'AssetValue', dependent: :delete_all
   has_many :positions
   has_many :indices, through: :positions
-
-  def price
-    return 0 unless values.any?
-    values.order(:id).last.price
-  end
 
   def self.update_data(data)
     asset = find_by(code: data['symbol'])
@@ -17,17 +9,17 @@ class Asset < ApplicationRecord
       asset = self.new
       asset.code = data['symbol']
       asset.name = data['name']
-      asset.save!
     end
 
-    # Keep only a certain max historical values for asset
-    if asset.values.count > MAX_VALUES
-      asset.values.order(:id).last.destroy
+    old_price = asset.price
+    asset.price = data['price_usd']
+    asset.market_cap = data['market_cap_usd']
+
+    if old_price
+      asset.price_diff = asset.price - old_price
+      asset.price_diff_percent = ((asset.price / old_price) - 1) * 100
     end
 
-    value = asset.values.new
-    value.price = data['price_usd']
-    value.market_cap = data['market_cap_usd']
-    value.save!
+    asset.save!
   end
 end

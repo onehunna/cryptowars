@@ -4,10 +4,9 @@ class CreateIndices < ActiveRecord::Migration[5.0]
       t.integer :user_id
       t.string :name
       t.decimal :value
-      t.decimal :value_diff_1h
-      t.decimal :value_diff_24h
-      t.decimal :value_diff_7d
-      t.integer :rank
+      t.decimal :value_diff, default: 0
+      t.decimal :value_diff_percent, default: 0
+      t.integer :rank, default: 0
 
       t.timestamps
     end

@@ -3,8 +3,8 @@ class CreateIndexValues < ActiveRecord::Migration[5.0]
     create_table :index_values do |t|
       t.integer :index_id
       t.decimal :value
-      t.decimal :value_diff
-      t.decimal :value_diff_percent
+      t.decimal :value_diff, default: 0
+      t.decimal :value_diff_percent, default: 0
 
       t.timestamps
     end

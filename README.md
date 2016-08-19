@@ -1,24 +1,41 @@
-# README
+# CryptoWars
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Development
 
-Things you may want to cover:
+Start up dependencies:
 
-* Ruby version
+```bash
+docker-compose up -d
+```
 
-* System dependencies
+Install dependencies:
 
-* Configuration
+```bash
+gem install bundler
+bundle install
+```
 
-* Database creation
+Set up database:
 
-* Database initialization
+```bash
+bundle exec rake db:create db:migrate
+```
 
-* How to run the test suite
+Seed it up with all the assets and a test fund:
 
-* Services (job queues, cache servers, search engines, etc.)
+```bash
+bundle exec rake db:seed
+```
 
-* Deployment instructions
+Start it up:
 
-* ...
+```bash
+bundle exec foreman start
+open http://localhost:5000
+```
+
+### Resetting DB
+
+```bash
+bundle exec rake db:drop db:create db:migrate db:seed
+```

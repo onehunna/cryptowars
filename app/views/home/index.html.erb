@@ -1,7 +1,6 @@
 <table class="leaderboard">
   <tbody>
     <% @indices.each_with_index do |index, idx| %>
-      <!-- Playah -->
       <tr>
         <td><%= idx + 1 %></td>
         <td>
@@ -19,13 +18,10 @@
           <%= number_to_currency index.value %>
         </td>
         <td>
-          <% if index.value_diff_1h.present? %>
-            <% if index.value_diff_1h > 0 %>
-              <span style="color: green;">+<%= number_to_currency index.value_diff_1h %></span>
-            <% else %>
-               <span style="color: red;"><%= number_to_currency index.value_diff_1h %></span>
-            <% end %>
-          <% end %>
+          <%= positive_negative_format(index.value_diff, formatter: :currency) %>
+        </td>
+        <td>
+          <%= positive_negative_format index.value_diff_percent, formatter: :percentage %>
         </td>
       </tr>
     <% end %>
