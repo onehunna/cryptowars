@@ -5,6 +5,8 @@ class Asset < ApplicationRecord
   monetize :price_cents
   monetize :price_diff_cents
 
+  scope :by_importance, -> { where.not(market_cap: nil).order(market_cap: :desc) }
+
   def self.update_data(data)
     asset = find_by(code: data['symbol'])
 
