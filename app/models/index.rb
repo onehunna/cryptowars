@@ -31,17 +31,10 @@ class Index < ApplicationRecord
 
   def recalculate!
     calculated_last_value = values.create!
+    self.value = calculated_last_value.value
     self.value_diff = calculated_last_value.value_diff
     self.value_diff_percent = calculated_last_value.value_diff_percent
     save!
-  end
-
-  def last_value
-    values.order(:id).last
-  end
-
-  def value
-    last_value&.value
   end
 
   def total_weights
