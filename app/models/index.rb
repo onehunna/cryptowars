@@ -1,5 +1,5 @@
 class Index < ApplicationRecord
-  BASELINE = 100.to_money('USD')
+  BASELINE = 100
 
   belongs_to :user
   has_many :positions, dependent: :delete_all
@@ -8,12 +8,9 @@ class Index < ApplicationRecord
 
   after_create :initialize!
 
-  monetize :value_cents
-  monetize :value_diff_cents
-
   def initialize!
     positions.each(&:initialize!)
-    normalize_positions!
+    #normalize_positions!
     recalculate!
   end
 

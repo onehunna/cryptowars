@@ -18,53 +18,46 @@ ActiveRecord::Schema.define(version: 20160818033538) do
   create_table "assets", force: :cascade do |t|
     t.string   "code"
     t.string   "name"
-    t.decimal  "market_cap",          precision: 14, scale: 2
-    t.integer  "price_cents",                                  default: 0,     null: false
-    t.string   "price_currency",                               default: "USD", null: false
-    t.integer  "price_diff_cents",                             default: 0,     null: false
-    t.string   "price_diff_currency",                          default: "USD", null: false
-    t.decimal  "price_diff_percent",                           default: "0.0"
-    t.datetime "created_at",                                                   null: false
-    t.datetime "updated_at",                                                   null: false
+    t.decimal  "market_cap",         precision: 14, scale: 2
+    t.decimal  "price"
+    t.decimal  "price_diff",                                  default: "0.0"
+    t.decimal  "price_diff_percent",                          default: "0.0"
+    t.datetime "created_at",                                                  null: false
+    t.datetime "updated_at",                                                  null: false
     t.index ["code"], name: "index_assets_on_code", unique: true, using: :btree
   end
 
   create_table "index_values", force: :cascade do |t|
     t.integer  "index_id"
-    t.integer  "value_cents",         default: 0,     null: false
-    t.string   "value_currency",      default: "USD", null: false
-    t.integer  "value_diff_cents",    default: 0,     null: false
-    t.string   "value_diff_currency", default: "USD", null: false
-    t.decimal  "value_diff_percent",  default: "0.0"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.decimal  "value"
+    t.decimal  "value_diff",         default: "0.0"
+    t.decimal  "value_diff_percent", default: "0.0"
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
     t.index ["index_id"], name: "index_index_values_on_index_id", using: :btree
   end
 
   create_table "indices", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "name"
-    t.integer  "value_cents",         default: 0,     null: false
-    t.string   "value_currency",      default: "USD", null: false
-    t.integer  "value_diff_cents",    default: 0,     null: false
-    t.string   "value_diff_currency", default: "USD", null: false
-    t.decimal  "value_diff_percent",  default: "0.0"
-    t.integer  "rank",                default: 0
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.decimal  "value"
+    t.decimal  "value_diff",         default: "0.0"
+    t.decimal  "value_diff_percent", default: "0.0"
+    t.integer  "rank",               default: 0
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
     t.index ["user_id"], name: "index_indices_on_user_id", using: :btree
   end
 
   create_table "positions", force: :cascade do |t|
     t.integer  "asset_id"
     t.integer  "index_id"
-    t.decimal  "weight",                    default: "1.0"
+    t.decimal  "weight",           default: "1.0"
     t.decimal  "relative_weight"
-    t.integer  "dollars_to_spend_cents",    default: 0,     null: false
-    t.string   "dollars_to_spend_currency", default: "USD", null: false
+    t.decimal  "dollars_to_spend"
     t.decimal  "size"
-    t.datetime "created_at",                                null: false
-    t.datetime "updated_at",                                null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
     t.index ["asset_id", "index_id"], name: "index_positions_on_asset_id_and_index_id", unique: true, using: :btree
     t.index ["index_id"], name: "index_positions_on_index_id", using: :btree
   end

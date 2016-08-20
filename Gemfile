@@ -24,9 +24,6 @@ gem 'devise'
 gem 'omniauth-twitter'
 gem 'faraday'
 
-# Money gem to deal with all the currency fields properly
-gem 'money-rails'
-
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks

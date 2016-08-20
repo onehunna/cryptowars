@@ -5,7 +5,7 @@ class CreatePositions < ActiveRecord::Migration[5.0]
       t.integer :index_id
       t.decimal :weight, default: 1
       t.decimal :relative_weight
-      t.monetize :dollars_to_spend
+      t.decimal :dollars_to_spend
       t.decimal :size
 
       t.timestamps

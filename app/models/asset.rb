@@ -2,9 +2,6 @@ class Asset < ApplicationRecord
   has_many :positions
   has_many :indices, through: :positions
 
-  monetize :price_cents
-  monetize :price_diff_cents
-
   scope :by_importance, -> { where.not(market_cap: nil).order(market_cap: :desc) }
 
   def self.update_data(data)
@@ -20,7 +17,7 @@ class Asset < ApplicationRecord
     asset.price = data['price_usd']
     asset.market_cap = data['market_cap_usd']
 
-    if old_price.positive?
+    if old_price
       asset.price_diff = asset.price - old_price
       asset.price_diff_percent = ((asset.price / old_price) - 1) * 100
     end

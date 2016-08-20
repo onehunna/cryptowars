@@ -2,9 +2,6 @@ class IndexValue < ApplicationRecord
   belongs_to :index
   before_validation :calculate, on: :create
 
-  monetize :value_cents
-  monetize :value_diff_cents
-
   validates :value, presence: true
 
   def calculate
