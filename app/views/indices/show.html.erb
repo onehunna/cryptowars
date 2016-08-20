@@ -27,7 +27,13 @@
         <td><%= number_with_precision position.size, precision: 2 %> <%= position.asset.code %></td>
         <td><%= number_to_currency position.value %></td>
         <td><%= number_to_percentage position.relative_weight * 100, precision: 0 %></td>
-        <td><%= number_to_currency position.asset.market_cap, precision: 0 %></td>
+        <td>
+          <% if position.asset.market_cap? %>
+            <%= number_to_currency position.asset.market_cap, precision: 0 %>
+          <% else %>
+            N/A
+          <% end %>
+        </td>
         <td><%= number_to_currency position.asset.price %></td>
       </tr>
     <% end %>
