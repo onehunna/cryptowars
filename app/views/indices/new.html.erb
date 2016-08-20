@@ -15,7 +15,7 @@
       <td>Price</td>
       <td>Selected</td>
     </tr>
-    <% @assets.limit(15).each_with_index do |asset, idx| %>
+    <% @assets.each_with_index do |asset, idx| %>
       <!-- Asset -->
       <tr class="asset">
         <td><%= idx + 1 %></td>
@@ -27,7 +27,7 @@
             N/A
           <% end %>
         </td>
-        <td><%= number_to_currency asset.price %></td>
+        <td><%= number_to_currency asset.price, precision: 6 %></td>
         <td><%= check_box_tag 'index[codes][]', asset.code %></td>
       </tr>
     <% end %>
