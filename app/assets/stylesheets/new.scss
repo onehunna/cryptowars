@@ -27,6 +27,10 @@
     tr {
       td {
         background-color: black;
+        cursor: pointer;
+      }
+      &:hover td {
+        background-color: #333;
       }
     }
   }
