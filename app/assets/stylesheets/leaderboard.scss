@@ -1,14 +1,64 @@
 // Leaderboard
 
+.leaderboard__wrapper {
+  margin: 0px 20px;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+.leaderboard {
+  width: 100%;
+  margin-top: 100px;
+  border-top: 4px solid white;
+
+  th {
+    font-size: 16px;
+    font-family: monospace;
+    padding: 10px 0px;
+    text-align: left;
+    border-bottom: 1px solid white;
+  }
+
+  tr + tr {
+    border-top: 1px solid white;
+  }
+
+  td {
+    padding: 20px 0px;
+  }
+}
+
 .leaderboard__playah {
   display: flex;
+  align-items: center;
 }
 
 .leaderboard__playah__icon {
-  width: 40px;
-  height: 40px;
+  margin-right: 20px;
+  width: 80px;
+  height: 80px;
   border: 1px solid rgba(0,0,0,0.25);
   border-radius: 50%;
+}
+
+.link {
+  text-decoration: none;
+  color: white;
+}
+
+.leaderboard__rank {
+  font-size: 16px;
+  font-family: monospace;
+}
+
+.leaderboard__index-name {
+  font-size: 36px;
+}
+
+.leaderboard__index-playah {
+  font-family: monospace;
 }
 
 // Asset
@@ -34,4 +84,8 @@
     border-bottom: 1px solid red;
     border-collapse: collapse;
   }
+}
+
+.big-numbah {
+  font-size: 36px;
 }

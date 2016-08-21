@@ -1,29 +1,34 @@
-<table class="leaderboard">
-  <tbody>
-    <% @indices.each_with_index do |index, idx| %>
+<div class="leaderboard__wrapper">
+  <table class="leaderboard">
+    <tbody>
       <tr>
-        <td><%= idx + 1 %></td>
-        <td>
-          <%= link_to index_path(index) do %>
-            <div class="leaderboard__playah">
-              <img class="leaderboard__playah__icon" src="<%= index.user.avatar_url %>"></img>
-              <div>
-                <div><%= index.name %></div>
-                <div><%= index.user.name %></div>
-              </div>
-            </div>
-          <% end %>
-        </td>
-        <td>
-          <%= number_to_currency index.value %>
-        </td>
-        <td>
-          <%= positive_negative_format(index.value_diff, formatter: :currency) %>
-        </td>
-        <td>
-          <%= positive_negative_format index.value_diff_percent, formatter: :percentage %>
-        </td>
+        <th>Rank</th>
+        <th>Index</th>
+        <th>Value</th>
+        <th>Change</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+      <% @indices.each_with_index do |index, idx| %>
+        <tr>
+          <td class="leaderboard__rank"><%= idx + 1 %>.</td>
+          <td>
+            <%= link_to index_path(index), class: 'link' do %>
+              <div class="leaderboard__playah">
+                <img class="leaderboard__playah__icon" src="<%= index.user.avatar_url %>"></img>
+                <div>
+                  <div class="leaderboard__index-name"><%= index.name %></div>
+                  <div class="leaderboard__index-playah"><%= index.user.name %></div>
+                </div>
+              </div>
+            <% end %>
+          </td>
+          <td class="big-numbah">
+            <%= number_to_currency index.value %>
+          </td>
+          <td class="big-numbah">
+            <%= positive_negative_format index.value_diff_percent, formatter: :percentage %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

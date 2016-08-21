@@ -1,0 +1,22 @@
+.name-asset {
+  input {
+    font-size: 64px;
+    color: white;
+    font-family: "Avenir Next";
+    font-weight: 600;
+    border: 0;
+    border-bottom: 2px solid white;
+    width: 100%;
+    background-color: transparent;
+  }
+}
+
+.assets {
+  tbody {
+    tr {
+      td {
+        background-color: black;
+      }
+    }
+  }
+}
