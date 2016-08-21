@@ -1,3 +1,6 @@
+<link rel="stylesheet" type="text/css" href="/assets/dist/datatables.min.css">
+<script type="text/javascript" src="/assets/dist/datatables.min.js"></script>
+
 <%= form_for @index do |f| %>
 
 <div class="name-asset">
@@ -31,5 +34,5 @@
   </tbody>
 </table>
 
-<%= f.submit %>
+<%= f.submit 'Create index', id: 'create_index' %>
 <% end %>

@@ -13,8 +13,8 @@ $(document).on('turbolinks:load', function() {
     assets.add_asset(asset);
   });
 
-  var assets = new Assets($('.picked_assets'));
-  window.assets = assets;
+  var assets = window.assets = new Assets($('.picked_assets'));
+  var validator = window.validator = new FormValidator($('#new_index'));
 });
 
 var Asset = function(options) {
@@ -87,6 +87,43 @@ AssetView.prototype = {
   }
 };
 
+var FormValidator = function(form) {
+  this.form = form;
+  this.form.on('submit', this.validate.bind(this));
+  this.form.on('change', this.validate.bind(this));
+  this.form.on('keyup', this.validate.bind(this));
+  this.submit = this.form.find('#create_index').removeAttr('disabled');
+  this.index_name = this.form.find('#index_name');
+
+  this.validate();
+}
+FormValidator.prototype = {
+  validate: function(e) {
+    var valid = true;
+
+    if (!this.index_name.val()) {
+      valid = false;
+    }
+
+    if (!assets.any()) {
+      valid = false;
+    }
+
+    if (valid) {
+      this.submit.removeAttr('disabled');
+    }
+    else {
+      this.submit.attr('disabled', 'disabled');
+
+      if (e) {
+        e.preventDefault();
+      }
+    }
+
+    return valid;
+  }
+};
+
 var Assets = function(container) {
   if (!container) {
     throw Error('No container specified');
@@ -96,12 +133,18 @@ var Assets = function(container) {
   this.container = container;
 };
 Assets.prototype = {
+  any: function() {
+    return this.assets.length > 0;
+  },
+
   add_asset: function(asset) {
     var existing_asset = this.find_asset(asset.code);
     if (existing_asset) { return; }
 
     this.assets.push(asset);
     this.render_asset(asset);
+
+    validator.validate();
   },
 
   remove_asset: function(asset) {
@@ -111,6 +154,8 @@ Assets.prototype = {
 
     this.assets.splice(index, 1);
     this.unrender_asset(asset);
+
+    validator.validate();
   },
 
   find_asset: function(code) {

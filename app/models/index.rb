@@ -6,6 +6,9 @@ class Index < ApplicationRecord
   has_many :assets, through: :positions
   has_many :values, class_name: 'IndexValue', dependent: :delete_all
 
+  validates :name, presence: true
+  validate :validate_positions
+
   after_create :initialize!
 
   def initialize!
@@ -44,5 +47,12 @@ class Index < ApplicationRecord
       p.asset = Asset.find_by(code: code)
       p.weight = weight || 1
     end
+  end
+
+  private
+
+  def validate_positions
+    return if positions.any?
+    errors.add(:positions, 'should not be empty')
   end
 end
