@@ -8,7 +8,7 @@ class IndicesController < ApplicationController
   def create
     @index = current_user.indices.new
     @index.name = params[:index][:name]
-    @index.assign_codes(params[:index][:codes], params[:index])
+    @index.assign_codes(params[:index][:codes])
     @index.save!
 
     redirect_to index_path(@index)

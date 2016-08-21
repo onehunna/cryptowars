@@ -39,10 +39,10 @@ class Index < ApplicationRecord
   end
 
   def assign_codes(codes = [], parameters = {})
-    codes.each do |code|
+    codes.each do |code, weight|
       p = self.positions.new
       p.asset = Asset.find_by(code: code)
-      p.weight = parameters[:"#{code}_weight"] || 1
+      p.weight = weight || 1
     end
   end
 end
