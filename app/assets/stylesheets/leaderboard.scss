@@ -14,11 +14,16 @@ table {
   border-top: 4px solid white;
 
   th {
+    cursor: auto;
     font-size: 16px;
     font-family: monospace;
     padding: 10px 0px;
     text-align: left;
     border-bottom: 1px solid white;
+  }
+
+  tr {
+    cursor: pointer;
   }
 
   tr + tr {
@@ -37,8 +42,8 @@ table {
 
 .leaderboard__playah__icon {
   margin-right: 20px;
-  width: 80px;
-  height: 80px;
+  width: 60px;
+  height: 60px;
   border: 1px solid rgba(0,0,0,0.25);
   border-radius: 50%;
 }
@@ -55,6 +60,7 @@ table {
 
 .leaderboard__index-name {
   font-size: 36px;
+  font-weight: 600;
 }
 
 .leaderboard__index-playah {

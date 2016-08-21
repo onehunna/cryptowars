@@ -1,5 +1,12 @@
+.new_index {
+  margin-top: 100px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
 .name-asset {
   input {
+    outline: none;
     font-size: 64px;
     color: white;
     font-family: "Avenir Next";
@@ -8,6 +15,10 @@
     border-bottom: 2px solid white;
     width: 100%;
     background-color: transparent;
+
+    &:focus {
+      border-bottom: 2px solid blue;
+    }
   }
 }
 

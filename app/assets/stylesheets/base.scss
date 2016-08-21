@@ -7,6 +7,7 @@ html, body {
 body {
   background-color: black;
   color: white;
+  -webkit-font-smoothing: antialiased;
   font-family: -apple-system, BlinkMacSystemFont,
       "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
       "Fira Sans", "Droid Sans", "Helvetica Neue",
@@ -17,8 +18,7 @@ body {
 
 .header {
   z-index: 1;
-  height: 60px;
-  position: absolute;
+  position: fixed;
   left: 0;
   top: 0;
   right: 0;
@@ -26,7 +26,6 @@ body {
   align-items: center;
   justify-content: space-between;
   min-height: 48px;
-  padding: 4px;
   color: white;
   background-color: rgba(0, 0, 0, 0.85);
 
@@ -53,7 +52,9 @@ body {
   }
 
   &__user__link {
+    font-family: monospace;
     color: white;
+    margin-top: 4px;
     font-size: 12px;
     text-decoration: none;
   }
@@ -64,6 +65,7 @@ body {
   font-size: 24px;
   font-weight: 600;
   margin: 10px;
+  padding: 10px;
   color: white;
   text-decoration: none;
   text-transform: uppercase;

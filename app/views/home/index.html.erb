@@ -8,18 +8,16 @@
         <th>Change</th>
       </tr>
       <% @indices.each_with_index do |index, idx| %>
-        <tr>
+        <tr onclick="location.href='<%= index_path(index) %>'">
           <td class="leaderboard__rank"><%= idx + 1 %>.</td>
           <td>
-            <%= link_to index_path(index), class: 'link' do %>
-              <div class="leaderboard__playah">
-                <img class="leaderboard__playah__icon" src="<%= index.user.avatar_url %>"></img>
-                <div>
-                  <div class="leaderboard__index-name"><%= index.name %></div>
-                  <div class="leaderboard__index-playah"><%= index.user.name %></div>
-                </div>
+            <div class="leaderboard__playah">
+              <img class="leaderboard__playah__icon" src="<%= index.user.avatar_url %>"></img>
+              <div>
+                <div class="leaderboard__index-name"><%= index.name %></div>
+                <div class="leaderboard__index-playah"><%= index.user.name %></div>
               </div>
-            <% end %>
+            </div>
           </td>
           <td class="big-numbah">
             <%= number_to_currency index.value %>
