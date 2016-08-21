@@ -16,8 +16,7 @@
   </thead>
   <tbody>
     <% @assets.each_with_index do |asset, idx| %>
-      <!-- Asset -->
-      <tr class="asset">
+      <tr class="asset" data-id="<%= asset.id %>" data-code="<%= asset.code %>" data-name="<%= asset.name %>">
         <td><%= idx + 1 %></td>
         <td><%= asset.name %></td>
         <td>
