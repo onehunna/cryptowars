@@ -6,8 +6,7 @@
 </p>
 
 <table class="assets">
-  <tbody>
-    <!-- Legend -->
+  <thead>
     <tr class="assets__legend">
       <td>#</td>
       <td>Name</td>
@@ -15,6 +14,8 @@
       <td>Price</td>
       <td>Selected</td>
     </tr>
+  </thead>
+  <tbody>
     <% @assets.each_with_index do |asset, idx| %>
       <!-- Asset -->
       <tr class="asset">
@@ -28,7 +29,10 @@
           <% end %>
         </td>
         <td><%= number_to_currency asset.price, precision: 6 %></td>
-        <td><%= check_box_tag 'index[codes][]', asset.code %></td>
+        <td>
+          <%= check_box_tag 'index[codes][]', asset.code, false, class: 'pick' %>
+          <%= number_field_tag "index[#{asset.code}_weight]", "",step: '0.01', class: 'weight', style: 'display: none;' %>
+        </td>
       </tr>
     <% end %>
   </tbody>
