@@ -3,11 +3,20 @@
   margin-left: 20px;
   margin-right: 20px;
   display: flex;
+  flex-direction: column;
 }
 
 .index__col {
   flex: 1;
 }
+
+.index__col--left {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 40px;
+  border-bottom: 2px solid white;
+}
+
 
 .index__title {
   font-size: 72px;
@@ -20,11 +29,16 @@
 }
 
 .index__big-numbahs {
-  font-size: 48px;
+  font-size: 72px;
   margin: 0px;
 }
 
 .index__stat {
+  margin-left: 50px;
+
+  &__group {
+    display: flex;
+  }
 }
 
 
