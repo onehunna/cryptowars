@@ -14,13 +14,13 @@ end
 puts 'Creating test Index "The Fund"'
 i = Index.new
 i.name = 'The Fund'
-i.codes = [
+i.assign_codes([
   Asset.all.sample.code,
   Asset.all.sample.code,
   Asset.all.sample.code,
   Asset.all.sample.code,
   Asset.all.sample.code,
   Asset.all.sample.code
-]
+])
 i.user = User.new(name: 'Ya Boi', email: 'itsyaboi@gmail.com')
 i.save

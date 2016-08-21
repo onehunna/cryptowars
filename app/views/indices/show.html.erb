@@ -27,9 +27,9 @@
           <td>#</td>
           <td>Name</td>
           <td>Amount</td>
-          <td>Value</td>
           <td>Weight</td>
-          <td>Market Cap</td>
+          <td>Initial Value</td>
+          <td>Current Value</td>
           <td>Price</td>
         </tr>
         <% @index.positions.each_with_index do |position, idx| %>
@@ -38,14 +38,13 @@
             <td><%= idx + 1 %></td>
             <td><%= position.asset.name %></td>
             <td><%= number_with_precision position.size, precision: 2, delimiter: "," %> <%= position.asset.code %></td>
-            <td><%= number_to_currency position.value %></td>
             <td><%= number_to_percentage position.relative_weight * 100, precision: 0 %></td>
             <td>
-              <% if position.asset.market_cap? %>
-                <%= number_to_currency position.asset.market_cap, precision: 0 %>
-              <% else %>
-                N/A
-              <% end %>
+              <%= number_to_currency position.value_at_purchase %>
+            </td>
+            <td>
+              <%= number_to_currency position.value %>
+              <%= positive_negative_format ((position.value / position.value_at_purchase) - 1) * 100, formatter: :percentage %>
             </td>
             <td><%= number_to_currency position.asset.price, precision: 6 %></td>
           </tr>

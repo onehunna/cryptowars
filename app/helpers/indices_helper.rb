@@ -15,6 +15,7 @@ module IndicesHelper
       style = 'color: red'
     else
       klass = 'zero'
+      style = 'color: #666'
     end
 
     content_tag :span, content, class: klass, style: style

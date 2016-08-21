@@ -52,12 +52,14 @@ ActiveRecord::Schema.define(version: 20160818033538) do
   create_table "positions", force: :cascade do |t|
     t.integer  "asset_id"
     t.integer  "index_id"
-    t.decimal  "weight",           default: "1.0"
+    t.decimal  "weight",            default: "1.0"
     t.decimal  "relative_weight"
     t.decimal  "dollars_to_spend"
     t.decimal  "size"
-    t.datetime "created_at",                       null: false
-    t.datetime "updated_at",                       null: false
+    t.decimal  "value_at_purchase"
+    t.decimal  "price_at_purchase"
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
     t.index ["asset_id", "index_id"], name: "index_positions_on_asset_id_and_index_id", unique: true, using: :btree
     t.index ["index_id"], name: "index_positions_on_index_id", using: :btree
   end

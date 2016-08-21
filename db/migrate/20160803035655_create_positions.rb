@@ -7,6 +7,8 @@ class CreatePositions < ActiveRecord::Migration[5.0]
       t.decimal :relative_weight
       t.decimal :dollars_to_spend
       t.decimal :size
+      t.decimal :value_at_purchase
+      t.decimal :price_at_purchase
 
       t.timestamps
     end
