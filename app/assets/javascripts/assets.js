@@ -141,6 +141,21 @@ Assets.prototype = {
     return this.assets.length > 0;
   },
 
+  roll_dice: function() {
+    var self = this;
+
+    $.get('/roll-dice', function(data) {
+      if (!data || !data.length) {
+        alert('Error occured while rolling the dice');
+      }
+
+      self.assets = data.map(function(asset) { return new Asset(asset); });
+      self.render();
+
+      validator.validate();
+    });
+  },
+
   add_asset: function(asset) {
     var existing_asset = this.find_asset(asset.code);
     if (existing_asset) { return; }
@@ -177,10 +192,7 @@ Assets.prototype = {
   render: function() {
     var self = this;
 
-    console.log('render');
-    console.log(this.assets);
-
     this.container.html('');
-    this.assets.forEach(self.render_asset);
+    this.assets.forEach(self.render_asset.bind(this));
   }
 };

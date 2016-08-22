@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   }
 
   get '/assets' => 'assets#index'
+  get '/roll-dice' => 'assets#roll_dice'
 
   resources :indices, only: [:new, :create, :show]
 
