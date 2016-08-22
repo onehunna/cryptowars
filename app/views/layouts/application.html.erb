@@ -38,7 +38,7 @@
     </div>
     <% flash.keys.each do |k| %>
       <div class="flash <%= k %>">
-        </span>Msg goes here<%= flash[k] %>
+        </span><%= flash[k] %>
       </div>
     <% end %>
     <%= yield %>

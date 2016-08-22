@@ -1,6 +1,11 @@
 class IndicesController < ApplicationController
   skip_before_filter :authenticate_user!, only: [:show, :index]
+
   def new
+    if current_user.indices.count >= Index::MAX_INDICES_PER_USER
+      redirect_to root_path, notice: "You've reached the max amount of #{Index::MAX_INDICES_PER_USER} indices per user"
+    end
+
     @assets = Asset.by_importance
     @index = Index.new
   end

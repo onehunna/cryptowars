@@ -1,5 +1,6 @@
 class Index < ApplicationRecord
   BASELINE = 100
+  MAX_INDICES_PER_USER = 5
 
   belongs_to :user
   has_many :positions, dependent: :delete_all
