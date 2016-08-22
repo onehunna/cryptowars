@@ -6,7 +6,8 @@ $(document).on('turbolinks:load', function() {
   }
 
   $('.assets').DataTable({
-    "autoWidth": false
+    "autoWidth": false,
+     "paging": false
   });
 
   $(document).on('click', 'tr.asset', function(e) {
