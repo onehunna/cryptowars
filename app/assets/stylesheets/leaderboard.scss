@@ -24,6 +24,9 @@ table {
 
   tr {
     cursor: pointer;
+    &:hover td {
+      background: #333;
+    }
   }
 
   tr + tr {
