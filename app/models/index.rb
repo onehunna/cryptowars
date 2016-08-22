@@ -50,6 +50,10 @@ class Index < ApplicationRecord
     end
   end
 
+  def to_param
+    "#{id}-#{name.parameterize}"
+  end
+
   private
 
   def validate_positions
