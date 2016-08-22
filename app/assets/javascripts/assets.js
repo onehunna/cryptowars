@@ -1,3 +1,5 @@
+var MAX_POSITIONS = 6;
+
 $(document).on('turbolinks:load', function() {
   if (!$('#indices-new').length) {
     return;
@@ -18,6 +20,8 @@ $(document).on('turbolinks:load', function() {
   var assets = window.assets = new Assets($('.picked_assets'));
   var validator = window.validator = new FormValidator($('#new_index'));
 
+  // Focus name fields
+  $('#index_name').focus();
   $('#lucky').on('click', assets.roll_dice.bind(assets));
 });
 
@@ -159,6 +163,7 @@ Assets.prototype = {
   },
 
   add_asset: function(asset) {
+    if (this.assets.length >= MAX_POSITIONS) { return; }
     var existing_asset = this.find_asset(asset.code);
     if (existing_asset) { return; }
 
