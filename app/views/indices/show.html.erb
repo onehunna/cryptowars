@@ -54,6 +54,6 @@
   </div>
 </div>
 
-<% if signed_in? %>
-  <button type="button" name="button">Delete index</button>
+<% if signed_in? && @index.user == current_user %>
+  <%= button_to "Delete index", @index, method: :delete, :"data-confirm" => 'Are you sure?' %>
 <% end %>

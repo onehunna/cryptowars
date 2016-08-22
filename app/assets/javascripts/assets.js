@@ -17,6 +17,8 @@ $(document).on('turbolinks:load', function() {
 
   var assets = window.assets = new Assets($('.picked_assets'));
   var validator = window.validator = new FormValidator($('#new_index'));
+
+  $('#lucky').on('click', assets.roll_dice.bind(assets));
 });
 
 var Asset = function(options) {
