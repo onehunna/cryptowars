@@ -6,33 +6,47 @@
 <div class="name-asset">
   <%= f.text_field :name, placeholder: 'Name your index...' %>
 </div>
-<div class="picked_assets"></div>
-<table class="assets">
-  <thead>
-    <tr class="assets__legend">
-      <td>#</td>
-      <td>Name</td>
-      <td>Market Cap</td>
-      <td>Price</td>
-    </tr>
-  </thead>
-  <tbody>
-    <% @assets.each_with_index do |asset, idx| %>
-      <tr class="asset" data-id="<%= asset.id %>" data-code="<%= asset.code %>" data-name="<%= asset.name %>">
-        <td><%= idx + 1 %></td>
-        <td><%= asset.name %></td>
-        <td>
-          <% if asset.market_cap? %>
-            <%= number_to_currency asset.market_cap, precision: 0 %>
-          <% else %>
-            N/A
-          <% end %>
-        </td>
-        <td><%= number_to_currency asset.price, precision: 6 %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="dank__wrapper">
 
-<%= f.submit 'Create index', id: 'create_index' %>
+<div class="wrappah">
+  <div class="picked_assets">
+    <h2 class="section-title">Selected Assets</h2>
+  </div>
+  <div class="input__wrapper">
+    <button type="button" name="button">I'm feeling lucky</button>
+    <%= f.submit 'Create index', id: 'create_index' %>
+  </div>
+</div>
+
+<div class="danktable__wrapper">
+  <h2 class="section-title">Asset List</h2>
+  <table class="assets">
+    <thead>
+      <tr class="assets__legend">
+        <td>#</td>
+        <td>Name</td>
+        <td>Market Cap</td>
+        <td>Price</td>
+      </tr>
+    </thead>
+    <tbody>
+      <% @assets.each_with_index do |asset, idx| %>
+        <tr class="asset" data-id="<%= asset.id %>" data-code="<%= asset.code %>" data-name="<%= asset.name %>">
+          <td><%= idx + 1 %></td>
+          <td><%= asset.name %></td>
+          <td>
+            <% if asset.market_cap? %>
+              <%= number_to_currency asset.market_cap, precision: 0 %>
+            <% else %>
+              N/A
+            <% end %>
+          </td>
+          <td><%= number_to_currency asset.price, precision: 6 %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  </div>
+</div>
+
 <% end %>

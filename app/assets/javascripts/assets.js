@@ -3,7 +3,9 @@ $(document).on('turbolinks:load', function() {
     return;
   }
 
-  $('.assets').DataTable();
+  $('.assets').DataTable({
+    "autoWidth": false
+  });
 
   $(document).on('click', 'tr.asset', function(e) {
     var $this = $(this);
@@ -28,7 +30,10 @@ var Asset = function(options) {
 
 var AssetView = function(options) {
   this.asset = options.asset;
-  this.el = this.$el = $('<div class="asset">');
+  this.el = this.$el = $('<div class="picked-asset">');
+  this.wrapper = $('<div class="dank-input">');
+  this.wrapper.append(this.weight_input());
+  this.wrapper.append(this.remove_link());
 }
 AssetView.prototype = {
   remove_link: function() {
@@ -81,8 +86,7 @@ AssetView.prototype = {
 
     this.$el.html(html);
     this.$el.append(this.form_data());
-    this.$el.append(this.weight_input());
-    this.$el.append(this.remove_link());
+    this.$el.append(this.wrapper);
     return this;
   }
 };

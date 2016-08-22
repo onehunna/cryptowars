@@ -35,3 +35,57 @@
     }
   }
 }
+
+.dank__wrapper {
+  margin-top: 20px;
+  justify-content: space-between;
+  display: flex;
+}
+
+.wrappah {
+  flex: 1;
+  margin-right: 50px;
+}
+
+.dataTables_wrapper {
+  flex: 1;
+}
+
+.picked-asset {
+  display: flex;
+    justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.dank-input {
+  display: flex;
+
+  input {
+    color: white;
+    background-color: black;
+    margin-right: 10px;
+  }
+}
+
+.section-title {
+  padding-bottom: 20px;
+  border-bottom: 1px solid white;
+}
+
+.input__wrapper {
+  display: flex;
+
+  button, input {
+    padding: 20px;
+  }
+
+  button {
+    flex: 1;
+    margin-right: 5px;
+  }
+
+  input {
+    flex: 1;
+    margin-left: 5px;
+  }
+}
