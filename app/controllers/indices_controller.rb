@@ -27,6 +27,12 @@ class IndicesController < ApplicationController
     redirect_to index_path(@index)
   end
 
+  def destroy
+    index = current_user.indices.find(params[:id]).destroy
+    notice = index ? "Index #{index.name} deleted" : ""
+    redirect_to root_path, notice: notice
+  end
+
   def show
     @index = Index.find(params[:id])
   end
