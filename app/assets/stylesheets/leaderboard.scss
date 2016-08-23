@@ -41,6 +41,7 @@ table {
 }
 
 .leaderboard__playah__icon {
+  background-color: white;
   margin-right: 20px;
   width: 60px;
   height: 60px;
@@ -93,4 +94,8 @@ table {
 
 .big-numbah {
   font-size: 36px;
+}
+
+.nomargin {
+  margin-bottom: 0px !important;
 }
