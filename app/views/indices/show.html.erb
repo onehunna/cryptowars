@@ -36,7 +36,7 @@
           <!-- Asset -->
           <tr class="asset">
             <td><%= idx + 1 %></td>
-            <td class="asset__link"><%= link_to position.asset.name, "https://coinmarketcap.com/currencies/#{position.asset.idem}" %></td>
+            <td class="asset__link"><%= link_to position.asset.name, "https://coinmarketcap.com/currencies/#{position.asset.idem}", :target => '_blank' %></td>
             <td><%= number_with_precision position.size, precision: 2, delimiter: "," %> <%= position.asset.code %></td>
             <td><%= number_to_percentage position.relative_weight * 100, precision: 0 %></td>
             <td>
