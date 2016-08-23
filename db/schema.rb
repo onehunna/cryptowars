@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160818033538) do
+ActiveRecord::Schema.define(version: 20160823163141) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20160818033538) do
     t.decimal  "price_diff_percent",                          default: "0.0"
     t.datetime "created_at",                                                  null: false
     t.datetime "updated_at",                                                  null: false
+    t.string   "idem"
     t.index ["code"], name: "index_assets_on_code", unique: true, using: :btree
   end
 
