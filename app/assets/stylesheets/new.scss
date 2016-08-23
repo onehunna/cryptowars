@@ -23,11 +23,20 @@
 }
 
 .assets {
+  thead {
+    tr td {
+      border-bottom: 2px solid #fff;
+    }
+  }
   tbody {
     tr {
       td {
         background-color: black;
         cursor: pointer;
+        border-bottom: 1px solid #fff;
+      }
+      &.even td {
+        background-color: #222;
       }
       &:hover td {
         background-color: #333;
@@ -40,6 +49,27 @@
   margin-top: 20px;
   justify-content: space-between;
   display: flex;
+}
+
+.danktable__wrapper {
+  position: relative;
+  .dataTables_filter {
+    position: absolute;
+    top: 24px;
+    right: 0;
+
+    input {
+      margin-left: 15px;
+
+    }
+  }
+  .dataTables_info {
+    padding: 10px;
+    color: #999;
+  }
+  .dataTables_empty {
+    padding: 10px;
+  }
 }
 
 .wrappah {

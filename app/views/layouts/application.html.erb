@@ -22,7 +22,7 @@
           <% end %>
           <div class="header__user__name">
             <strong><%= current_user.name %></strong>
-            <%= link_to 'Sign out', class: "header__user__link" do %>
+            <%= link_to destroy_user_session_path, class: "header__user__link", method: :delete do %>
               Sign Out
             <% end %>
           </div>
