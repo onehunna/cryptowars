@@ -11,6 +11,7 @@ class Asset < ApplicationRecord
       asset = self.new
       asset.code = data['symbol']
       asset.name = data['name']
+      asset.idem = data['id']
     end
 
     old_price = asset.price
