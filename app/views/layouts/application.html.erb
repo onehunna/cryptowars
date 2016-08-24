@@ -14,11 +14,17 @@
   <meta property="og:type" content="website" />
   <% if body_id == 'home-index' %>
     <meta property="og:url" content="http://cryptowars.io" />
-    <meta property="og:image" content="http://cryptowars.io/cryptodollah.jpg" />
+    <meta property="og:image" content="<%= image_path 'cryptodollah.jpg' %>" />
     <meta property="og:image:type" content="image/jpeg" />
     <meta property="og:image:width" content="620" />
     <meta property="og:image:height" content="530" />
   <% end %>
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@mihar" />
+  <meta name="twitter:title" content="<%= @page_title %>" />
+  <meta name="twitter:description" content="<%= @page_og_description %>" />
+  <meta name="twitter:image" content="<%= image_path 'cryptodollah.jpg' %>" />
 </head>
 <body id="<%= body_id %>" class="<%= body_class %>">
   <div class="app">
