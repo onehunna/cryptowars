@@ -5,7 +5,8 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
-  <title><%= @page_title || "CryptoWars" %></title>
+  <% @page_title ||= "CryptoWars" %>
+  <title><%= @page_title %></title>
   <% @page_description ||= 'Create your own cryptocurrency index' %>
   <% @page_og_description ||= 'Create your own cryptocurrency index and see how it compares to others' %>
   <meta name="description" content="<%= @page_description %>">
