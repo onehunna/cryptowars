@@ -26,8 +26,10 @@
       <%= link_to root_path, class:"header__logo" do %>
         CryptoWars
       <% end %>
-      <%= link_to new_index_path, class:"header__btn" do %>
-        🤑 <strong>New Index</strong> 🤑
+      <% if signed_in? %>
+        <%= link_to new_index_path, class:"header__btn header__btn__index" do %>
+          🤑 <strong>New Index</strong> 🤑
+        <% end %>
       <% end %>
       <% if signed_in? %>
         <div class="header__user">
