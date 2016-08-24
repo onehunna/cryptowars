@@ -70,10 +70,10 @@
   </div>
 </div>
 
+<% end %>
+
 <div class="delete-fund">
   <% if signed_in? && @index.user == current_user %>
     <%= button_to "☠️ Delete ☠️", @index, method: :delete, :"data-confirm" => 'Are you sure?' %>
   <% end %>
 </div>
-
-<% end %>
