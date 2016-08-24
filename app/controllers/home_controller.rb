@@ -3,6 +3,5 @@ class HomeController < ApplicationController
 
   def index
     @indices = Index.all.order(value: :desc)
-    expires_in 2.minutes, :public => true
   end
 end

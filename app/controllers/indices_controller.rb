@@ -35,6 +35,5 @@ class IndicesController < ApplicationController
 
   def show
     @index = Index.find(params[:id])
-    expires_in 5.minutes, :public => true
   end
 end
