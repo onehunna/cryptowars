@@ -2,6 +2,8 @@ class Position < ApplicationRecord
   belongs_to :index
   belongs_to :asset
 
+  validates :weight, numericality: { greater_than: 0 }
+
   def initialize!
     self.relative_weight ||= weight / index.total_weights
     self.dollars_to_spend ||= relative_weight * Index::BASELINE
