@@ -11,7 +11,7 @@ table {
 .leaderboard {
   width: 100%;
   margin-top: 100px;
-  border-top: 4px solid white;
+  border-top: 2px solid white;
 
   th {
     cursor: auto;
@@ -90,7 +90,7 @@ table {
 
   td {
     padding: 10px;
-    border-bottom: 1px solid red;
+    border-bottom: 1px solid white;
     border-collapse: collapse;
   }
 }
@@ -101,4 +101,11 @@ table {
 
 .nomargin {
   margin-bottom: 0px !important;
+}
+
+.flash {
+  position: absolute;
+  top: 70px;
+  left: 0;
+  right: 0;
 }

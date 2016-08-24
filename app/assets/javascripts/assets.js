@@ -46,7 +46,7 @@ AssetView.prototype = {
   remove_link: function() {
     var self = this;
 
-    return $('<div class="remove"><a href="#">x</a></div>')
+    return $('<div class="remove"><a href="#">×</a></div>')
     .on('click', function(e) {
       e.preventDefault();
       assets.remove_asset(self.asset);

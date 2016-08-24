@@ -60,9 +60,9 @@ body {
 }
 
 .header__logo {
-  font-family: "Avenir Next";
+  font-family: "Avenir Next", sans-serif;
   font-size: 24px;
-  font-weight: 600;
+  font-weight: 700;
   margin: 10px;
   padding: 10px;
   color: white;
@@ -74,10 +74,14 @@ body {
 .header__btn {
   margin: 10px;
   padding: 10px;
-  border: 1px solid white;
+  border: 1px solid green;
   border-radius: 2px;
   color: white;
   text-decoration: none;
+
+  &:hover {
+    background-color: green;
+  }
 
   &__icon {
     margin-right: 8px;

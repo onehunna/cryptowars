@@ -34,7 +34,7 @@
         </tr>
         <% @index.positions.each_with_index do |position, idx| %>
           <!-- Asset -->
-          <tr class="asset">
+          <tr class="asset show__asset">
             <td><%= idx + 1 %></td>
             <td class="asset__link"><%= link_to position.asset.name, "https://coinmarketcap.com/currencies/#{position.asset.idem}", :target => '_blank' %></td>
             <td><%= number_with_precision position.size, precision: 2, delimiter: "," %> <%= position.asset.code %></td>
@@ -54,6 +54,8 @@
   </div>
 </div>
 
-<% if signed_in? && @index.user == current_user %>
-  <%= button_to "Delete index", @index, method: :delete, :"data-confirm" => 'Are you sure?' %>
-<% end %>
+<div class="delete-fund">
+  <% if signed_in? && @index.user == current_user %>
+    <%= button_to "☠️ Delete ☠️", @index, method: :delete, :"data-confirm" => 'Are you sure?' %>
+  <% end %>
+</div>

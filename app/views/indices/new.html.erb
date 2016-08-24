@@ -1,22 +1,23 @@
 <%= form_for @index do |f| %>
 
   <div class="name-asset">
-    <%= f.text_field :name, placeholder: 'Name your index...' %>
+    <%= f.text_field :name, placeholder: 'Name your index...', autocomplete: "off", spellcheck: "false" %>
   </div>
   <div class="dank__wrapper">
 
   <div class="wrappah">
-    <h2 class="section-title">Selected Assets</h2>
+    <h2 class="section-title" style="position:relative;">Selected Assets<label style="position:absolute;right:0px;font-size:16px;font-weight:normal;margin-top:8px;">Weight</label></h2>
     <div class="picked_assets">
     </div>
     <div class="input__wrapper">
-      <button type="button" name="button" id="lucky">I'm feeling lucky</button>
-      <%= f.submit 'Create index', id: 'create_index' %>
+      <button type="button" name="button" id="lucky" style="display:flex;justify-content:center;align-items:center;font-weight:bold">🎲 I'm feeling lucky 🎲</button>
+      <%= f.submit '💰 Create index 💰', id: 'create_index' %>
     </div>
   </div>
 
   <div class="danktable__wrapper">
-    <h2 class="section-title">Asset List</h2>
+    <h2 class="section-title" style="margin-bottom:10px;">Asset List</h2>
+    <div style="height: 60vh;overflow-y:scroll;">
     <table class="assets">
       <thead>
         <tr class="assets__legend">
@@ -43,6 +44,7 @@
         <% end %>
       </tbody>
     </table>
+    </div>
     </div>
   </div>
 

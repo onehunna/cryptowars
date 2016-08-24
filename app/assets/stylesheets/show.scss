@@ -25,7 +25,7 @@
 }
 
 .index {
-  border-bottom: 2px solid white;
+  border-bottom: 1px solid white;
 }
 
 .index__big-numbahs {
@@ -51,4 +51,32 @@
 
 .index__table {
   width: 100%;
+}
+
+.show__asset {
+  border-bottom: 1px solid white;
+}
+
+.delete-fund {
+  margin: 20px;
+  margin-top: 50px;
+  display: flex;
+
+  form {
+    input {
+      outline: none;
+      background-color: black;
+      cursor: pointer;
+      width: 100%;
+      border: none;
+      font-weight: bold;
+      padding: 15px 30px;
+      border: 1px solid red;
+      color: white;
+
+      &:hover {
+        background-color: red;
+      }
+    }
+  }
 }

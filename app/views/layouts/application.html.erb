@@ -5,6 +5,15 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <meta name="description" content="Create your own cryptocurrency index">
+  <meta property="og:title" content="CryptoWars" />
+  <meta property="og:description" content="Create your own cryptocurrency index and see how it compares to others" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="http://cryptowars.io" />
+  <meta property="og:image" content="http://cryptowars.io/cryptodollah.jpg" />
+  <meta property="og:image:type" content="image/jpeg" />
+  <meta property="og:image:width" content="620" />
+  <meta property="og:image:height" content="530" />
 </head>
 <body id="<%= body_id %>" class="<%= body_class %>">
   <div class="app">
@@ -13,7 +22,7 @@
         CryptoWars
       <% end %>
       <%= link_to new_index_path, class:"header__btn" do %>
-        <strong>+</strong> New Index
+        🤑 <strong>New Index</strong> 🤑
       <% end %>
       <% if signed_in? %>
         <div class="header__user">
@@ -37,8 +46,8 @@
       <% end %>
     </div>
     <% flash.keys.each do |k| %>
-      <div class="flash <%= k %>">
-        </span><%= flash[k] %>
+      <div class="flash <%= k %>" style="display:flex;align-items:center;justify-content:center;">
+        <div style="font-size:24px;margin-right:10px;margin-top:5px;">☠️</div> <%= flash[k] %> <div style="font-size:24px;margin-left:10px;margin-top:5px;">☠️</div>
       </div>
     <% end %>
     <%= yield %>
