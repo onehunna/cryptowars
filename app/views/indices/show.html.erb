@@ -1,5 +1,3 @@
-<% cache ['show', @index] do %>
-
 <% all_time_diff = @index.value - Index::BASELINE %>
 
 <% @page_title = "#{@index.name} by #{@index.user.name}" %>
@@ -11,9 +9,10 @@
 <% else %>
 <% end %>
 
-
 <% @page_description = "All time profits #{number_to_currency(all_time_diff)}. Composed of #{@index.positions.count} assets: #{@index.positions.map(&:asset).map(&:code).to_sentence}." %>
 <% @page_og_description = @page_description %>
+
+<% cache ['show', @index] do %>
 
 <div class="index__wrapper">
   <div class="index__col--left">
