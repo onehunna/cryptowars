@@ -5,9 +5,12 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
-  <meta name="description" content="Create your own cryptocurrency index">
+  <title><%= @page_title || "CryptoWars" %></title>
+  <% @page_description ||= 'Create your own cryptocurrency index' %>
+  <% @page_og_description ||= 'Create your own cryptocurrency index and see how it compares to others' %>
+  <meta name="description" content="<%= @page_description %>">
   <meta property="og:title" content="CryptoWars" />
-  <meta property="og:description" content="Create your own cryptocurrency index and see how it compares to others" />
+  <meta property="og:description" content="<%= @page_og_description %>" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="http://cryptowars.io" />
   <meta property="og:image" content="http://cryptowars.io/cryptodollah.jpg" />
