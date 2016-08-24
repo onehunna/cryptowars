@@ -8,6 +8,8 @@
         <th>Change (10 min)</th>
       </tr>
       <% @indices.each_with_index do |index, idx| %>
+        <% cache ['home', index] do %>
+
         <tr onclick="location.href='<%= index_path(index) %>'">
           <td class="leaderboard__rank"><%= idx + 1 %>.</td>
           <td>
@@ -26,6 +28,8 @@
             <%= positive_negative_format index.value_diff_percent, formatter: :percentage %>
           </td>
         </tr>
+
+        <% end %>
       <% end %>
     </tbody>
   </table>
