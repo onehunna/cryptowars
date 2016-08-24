@@ -30,7 +30,7 @@ var Asset = function(options) {
   this.id = options.id;
   this.name = options.name;
   this.code = options.code;
-  this.weight = 1;
+  this.weight = options.weight || 1;
 
   this.view = new AssetView({ asset: this });
 }
@@ -156,7 +156,10 @@ Assets.prototype = {
         alert('Error occured while rolling the dice');
       }
 
-      self.assets = data.map(function(asset) { return new Asset(asset); });
+      self.assets = data.map(function(asset) {
+        asset.weight = (10 * Math.random()).toFixed(1);
+        return new Asset(asset);
+      });
       self.render();
 
       validator.validate();
