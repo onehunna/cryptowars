@@ -1,6 +1,15 @@
 <% all_time_diff = @index.value - Index::BASELINE %>
 
 <% @page_title = "#{@index.name} by #{@index.user.name}" %>
+
+<% if all_time_diff > 0 %>
+  <% @page_title = "📈 #{@page_title}" %>
+<% elsif all_time_diff < 0 %>
+  <% @page_title = "📉 #{@page_title}" %>
+<% else %>
+<% end %>
+
+
 <% @page_description = "All time profits #{number_to_currency(all_time_diff)}. Composed of #{@index.positions.count} assets: #{@index.positions.map(&:asset).map(&:code).to_sentence}." %>
 <% @page_og_description = @page_description %>
 
