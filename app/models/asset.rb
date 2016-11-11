@@ -18,7 +18,7 @@ class Asset < ApplicationRecord
     asset.price = data['price_usd']
     asset.market_cap = data['market_cap_usd']
 
-    if old_price
+    if asset.price && old_price
       asset.price_diff = asset.price - old_price
       asset.price_diff_percent = ((asset.price / old_price) - 1) * 100
     end
