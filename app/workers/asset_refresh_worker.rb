@@ -1,5 +1,6 @@
 class AssetRefreshWorker
   include Sidekiq::Worker
+  sidekiq_options :retry => 5
 
   def perform
     data = Coinmarketcap.fetch
@@ -10,4 +11,3 @@ class AssetRefreshWorker
     Index.all.each(&:recalculate!)
   end
 end
-
