@@ -9,5 +9,6 @@ class AssetRefreshWorker
     end
 
     Index.all.each(&:recalculate!)
+    Index.all.each(&:cleanup_cache!)
   end
 end

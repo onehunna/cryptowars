@@ -38,6 +38,13 @@ class Index < ApplicationRecord
     save!
   end
 
+  def cleanup_cache!
+    last_id = values.order(id: :desc).first.id
+    return unless last_id
+
+    values.where('id < ?', last_id).delete_all
+  end
+
   def total_weights
     positions.sum(:weight)
   end
